@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+}
+
+/**
+  Плавный скролл
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --color: #2B2D35;
+  --bg-color: linear-gradient(to right, #283048, #2B2D35);
+  --light-color: #ececec;
+  --operator-color: #ff6868;
+  --card-border-color: #ffffff4d;
+  --box-shadow-color: #14141480;
+  --border: 1px solid var(--color-border-gray);
+  --border-primary: 1px solid var(--color-primary);
+  --card-border-radius: 16px;
+  --input-border-radius: 12px;
+  --btn-border-radius: 50%;
+  --font-main: monospace, sans-serif;
+  --btn-padding: 15px;
+  --input-height: 100px;
+  --btn-height: 24px;
+  --transition-duration: .3s;
+}
+
+body {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: clamp(20px, 1.6666666667vw, 24px);
+  line-height: 21px;
+  color: var(--text-color);
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button,
+input,
+* {
+  transition-duration: var(--transition-duration);
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculator {
+  min-width: 400px;
+  min-height: 400px;
+}
+.calculator__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 16px;
+  border-radius: var(--card-border-radius);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border-color);
+  padding: 30px;
+}
+.calculator__field {
+  height: var(--input-height);
+  width: 100%;
+  height: var(--input-height);
+  background-color: transparent;
+  outline: none;
+  color: var(--light-color);
+  text-align: end;
+  padding: 0 12px;
+  border-radius: var(--input-border-radius);
+}
+.calculator__field:focus {
+  border-color: var(--light-color);
+}
+.calculator__list {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 16px;
+}
+.calculator__btn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: var(--btn-border-radius);
+  padding: var(--btn-padding);
+  box-shadow: inset 5px 5px 10px var(--box-shadow-color);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  color: var(--light-color);
+}
+.calculator__btn:hover {
+  opacity: 0.7;
+}
+.calculator__btn--operator {
+  color: var(--operator-color);
+}/*# sourceMappingURL=styles.css.map */

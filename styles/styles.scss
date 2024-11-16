@@ -1,0 +1,62 @@
+@import 
+        'normalize',
+        'mixins',
+        'variables',
+        'media',
+        'globals';
+
+.calculator{
+    min-width: 400px;
+    min-height: 400px;
+
+    &__inner{
+        @include flex-center;
+        flex-direction: column;
+        row-gap: 16px;
+        border-radius: var( --card-border-radius);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--card-border-color);
+        padding: 30px;   
+    }
+
+    &__field{
+        height: var(--input-height);
+        width: 100%;
+        height: var(--input-height);
+        background-color: transparent;
+        outline: none;
+        color: var(--light-color);
+        text-align: end;
+        padding: 0 12px;
+        border-radius: var(--input-border-radius);
+
+        &:focus{
+            border-color: var(--light-color);
+        }
+    }
+
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(4, 70px);
+        gap: 16px;
+    }
+
+    &__btn{
+        @include reset-btn;
+        @include flex-center;
+        @include square(60px);
+        border-radius: var(--btn-border-radius);
+        padding: var( --btn-padding);
+        box-shadow: inset 5px 5px 10px var(--box-shadow-color);
+        backdrop-filter: blur(10px);
+        color: var(--light-color);
+
+        &:hover{
+            opacity: .7;
+        }
+
+        &--operator{
+            color: var(--operator-color);
+        }
+    }
+}

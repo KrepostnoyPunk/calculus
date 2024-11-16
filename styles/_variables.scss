@@ -1,0 +1,31 @@
+:root{
+    // цвета
+    --color: #2B2D35;
+    --bg-color: linear-gradient(to right, #283048, #2B2D35);
+    --light-color: #ececec;
+    --operator-color: #ff6868;
+    --card-border-color: #ffffff4d;
+    --box-shadow-color: #14141480;
+
+    // рамки
+    --border: 1px solid var(--color-border-gray);
+    --border-primary: 1px solid var(--color-primary);
+
+    // радиус рамок
+    --card-border-radius: 16px;
+    --input-border-radius: 12px;
+    --btn-border-radius: 50%;
+
+    // шрифты
+    --font-main: monospace, sans-serif;
+
+    // отступы внутри кнопок
+    --btn-padding: 15px;
+
+    // высоты элементов
+    --input-height: 100px;
+    --btn-height: 24px;
+
+    // длительность переходов
+    --transition-duration: .3s;
+}

@@ -1,0 +1,24 @@
+body{
+    font-family: var(--font-main);
+    font-weight: 600;
+
+    @include elastic-text(20, 24);
+
+    line-height: 21px;
+    color: var(--text-color);
+    background: var(--bg-color);
+
+    @include flex-center;
+}
+
+button,
+input,
+* {
+    transition-duration: var(--transition-duration);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
