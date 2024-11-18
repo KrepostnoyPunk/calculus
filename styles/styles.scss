@@ -3,7 +3,8 @@
         'mixins',
         'variables',
         'media',
-        'globals';
+        'globals',
+        './blocks/theme-switcher';
 
 .calculator{
     min-width: 400px;
@@ -19,6 +20,13 @@
         padding: 30px;   
     }
 
+    &__header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     &__field{
         height: var(--input-height);
         width: 100%;
@@ -29,6 +37,7 @@
         text-align: end;
         padding: 0 12px;
         border-radius: var(--input-border-radius);
+        @include elastic-text(28, 30);
 
         &:focus{
             border-color: var(--light-color);
@@ -47,12 +56,13 @@
         @include square(60px);
         border-radius: var(--btn-border-radius);
         padding: var( --btn-padding);
-        box-shadow: inset 5px 5px 10px var(--box-shadow-color);
+        box-shadow: var(--inner-box-shadow);
         backdrop-filter: blur(10px);
         color: var(--light-color);
 
         &:hover{
             opacity: .7;
+            cursor: pointer;
         }
 
         &--operator{

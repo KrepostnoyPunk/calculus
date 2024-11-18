@@ -5,8 +5,8 @@ body{
     @include elastic-text(20, 24);
 
     line-height: 21px;
-    color: var(--text-color);
-    background: var(--bg-color);
+    color: var(--light-color);
+    background: var(--color-dark);
 
     @include flex-center;
 }
@@ -17,6 +17,7 @@ input,
     transition-duration: var(--transition-duration);
 }
 
+// убираем ползунки декремента/инкремента для input type=number
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
