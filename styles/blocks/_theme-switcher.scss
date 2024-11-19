@@ -3,19 +3,6 @@
 
     &__switcher{
         visibility: hidden;
-
-        &:checked + .theme-switcher__wrapper{
-            background-color: var(--light-color);
-        }
-
-        &:checked + .theme-switcher__icon * {
-            color: var(--color-dark);
-        }
-
-        &:checked +  .theme-switcher__wrapper .theme-switcher__circle{
-            animation: toggleOn var(--animation-duration) ease-in-out forwards;
-            background-color: var(--color-dark);
-        }
     }
 
     &__wrapper{
@@ -38,10 +25,10 @@
         height: 18px;
         background-color: transparent;
         border-radius: 50%;
-        animation: toggleOf var(--animation-duration) ease-in-out forwards;
     }
 
-    &__icon{
+    .fa-moon{
+        display: none;
         color: var(--color-dark);
     }
 

@@ -16,7 +16,7 @@
             <header class="calculator__header">
                 <h3 class="calculator__title">
                     <i>
-                        Geron
+                        Calculus
                     </i>
                 </h3>
 
@@ -24,21 +24,21 @@
                     <input type="checkbox" name="switcher" id="light-mode" class="theme-switcher__switcher">
     
                     <label for="light-mode" class="theme-switcher__wrapper">
-                        <div class="theme-switcher__circle">
-                            <i class="fa-regular fa-sun fa-sm theme-switcher__icon"></i>
-                            <!-- <i class="fa-regular fa-moon theme-switcher__icon"></i> -->
+                        <div class="theme-switcher__circle" tabindex="1">
+                            <i class="fa-regular fa-lightbulb fa-sm"></i>
+                            <i class="fa-regular fa-moon fa-sm"></i>
                         </div>
                     </label>
                 </div>
             </header>
 
-            <input type="text" name="resultField" class="calculator__field">
+            <input type="text" name="resultField" class="calculator__field" autocomplete="off">
 
-            <div class="calculator__list">
+            <div class="calculator__btns-container">
                     <button class="calculator__btn calculator__btn--operator">
                         C
                     </button>
-                    <button class="calculator__btn calculator__btn--operator calculator__btn--delete-operator">
+                    <button class="calculator__btn calculator__btn--operator">
                         <i id="x-mark" class="fa-regular fa-rectangle-xmark"></i>
                     </button>
                     <button class="calculator__btn calculator__btn--operator"">

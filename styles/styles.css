@@ -161,7 +161,9 @@ svg * {
   }
 }
 :root {
-  --color-dark: linear-gradient(to right, #283048, #2B2D35);
+  --color-dark: #2B2D35;
+  --color-bg: linear-gradient(to right, #283048, #2B2D35);
+  --color-light-bg: linear-gradient(90deg, rgba(166,174,191,1) 0%, rgba(249,247,227,1) 95%);
   --light-color: #ececec;
   --operator-color: #ff6868;
   --card-border-color: #ffffff4d;
@@ -185,7 +187,7 @@ body {
   font-size: clamp(20px, 1.6666666667vw, 24px);
   line-height: 21px;
   color: var(--light-color);
-  background: var(--color-dark);
+  background: var(--color-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,6 +205,11 @@ input[type=number]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.global--light {
+  color: var(--color-dark);
+  background: var(--light-color);
+}
+
 .theme-switcher {
   display: flex;
   justify-content: center;
@@ -210,16 +217,6 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .theme-switcher__switcher {
   visibility: hidden;
-}
-.theme-switcher__switcher:checked + .theme-switcher__wrapper {
-  background-color: var(--light-color);
-}
-.theme-switcher__switcher:checked + .theme-switcher__icon * {
-  color: var(--color-dark);
-}
-.theme-switcher__switcher:checked + .theme-switcher__wrapper .theme-switcher__circle {
-  animation: toggleOn var(--animation-duration) ease-in-out forwards;
-  background-color: var(--color-dark);
 }
 .theme-switcher__wrapper {
   box-shadow: var(--inner-box-shadow);
@@ -242,9 +239,9 @@ input[type=number]::-webkit-inner-spin-button {
   height: 18px;
   background-color: transparent;
   border-radius: 50%;
-  animation: toggleOf var(--animation-duration) ease-in-out forwards;
 }
-.theme-switcher__icon {
+.theme-switcher .fa-moon {
+  display: none;
   color: var(--color-dark);
 }
 @keyframes toggleOn {
@@ -280,6 +277,9 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid var(--card-border-color);
   padding: 30px;
 }
+.calculator__inner--light {
+  border: 1px solid var(--color-dark);
+}
 .calculator__header {
   width: 100%;
   display: flex;
@@ -298,10 +298,12 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: var(--input-border-radius);
   font-size: clamp(28px, 2.0833333333vw, 30px);
 }
-.calculator__field:focus {
+.calculator__field--light {
+  color: var(--operator-color);
   border-color: var(--light-color);
+  box-shadow: var(--inner-box-shadow);
 }
-.calculator__list {
+.calculator__btns-container {
   display: grid;
   grid-template-columns: repeat(4, 70px);
   gap: 16px;
@@ -327,4 +329,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .calculator__btn--operator {
   color: var(--operator-color);
+}
+.calculator__btn--light {
+  color: var(--color-dark);
 }/*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,8 @@
 :root{
     // цвета
-    --color-dark: linear-gradient(to right, #283048, #2B2D35);
+    --color-dark: #2B2D35;
+    --color-bg: linear-gradient(to right, #283048, #2B2D35);
+    --color-light-bg: linear-gradient(90deg, rgba(166,174,191,1) 0%, rgba(249,247,227,1) 95%);
     --light-color: #ececec;
     --operator-color: #ff6868;
     --card-border-color: #ffffff4d;

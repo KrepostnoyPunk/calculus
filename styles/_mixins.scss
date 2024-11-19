@@ -16,14 +16,6 @@
     align-items: center;
 }
 
-// центрирование через absolute
-@mixin absolute-center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-}
-
 // задает размер 1 к 1
 @mixin square ($size){
     width: $size;
